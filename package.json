@@ -1,0 +1,30 @@
+{
+  "name": "solo_project",
+  "version": "1.0.0",
+  "description": "Environmental & Health Department Compliance Management Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KP824/Solo_Project.git"
+  },
+  "author": "Kevin Phan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KP824/Solo_Project/issues"
+  },
+  "homepage": "https://github.com/KP824/Solo_Project#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
