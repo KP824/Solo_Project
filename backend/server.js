@@ -1,6 +1,6 @@
 
 const express = require('express');
-const port = 3000 || process.env.PORT;
+const PORT = 3000 || process.env.PORT;
 
 
 
@@ -37,4 +37,4 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(port, ()=> console.log(`Currently using port: ${port}`));
+app.listen(PORT, ()=> console.log(`Currently using port: ${PORT}`));
