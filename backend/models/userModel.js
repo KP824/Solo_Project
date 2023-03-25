@@ -1,0 +1,79 @@
+const mongoose = require('mongoose');
+
+const userSchema = mongoose.Schema({
+  email: {
+    type: String,
+    required: [true, 'Please add an email.'],
+    unique: true
+  },
+  name: {
+    type: String,
+    required: [true, 'Please add your name.']
+  },
+  password: {
+    type: String,
+    required: [true, 'Please add a password.'],
+  },
+  roles: {
+    type: String,
+    default: 'Manager'
+  },
+  locations: [
+    {
+      shopName: {
+        type: String,
+        required: [true, 'Please add store name.']
+      },
+      address: {
+        type: String,
+        required: [true, 'Please add an address.'],
+      },
+      tasks: [
+        {
+          taskName: {
+            type: String,
+            required: [true, 'Please add a task.']
+          }
+        },
+      ],
+      employees: [
+        {
+          employeeName: {
+            type: String,
+            required: [true, 'Please add employee name.']
+          },
+          startDate: {
+            type: String,
+            required: [true, 'Please add start date.']
+          },
+          foodHandler_id: {
+            number: {
+              type: String,
+              required: [true, 'Please add id number.']
+            },
+            issued_on: {
+              type: String,
+              required: [true, 'Please add id number.']
+            },
+            expires_on: {
+              type: String,
+              required: [true, 'Please add expiration date.']
+            } 
+          },
+          isActive: {
+            type: Boolean,
+            default: true,
+          },
+        }
+      ],
+    },
+  ],
+},
+{
+  timestamps: true
+});
+
+const User = mongoose.model('user', userSchema);
+mondule.exports = {
+  User
+};

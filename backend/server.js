@@ -1,34 +1,36 @@
-
+const path = require('path');
 const express = require('express');
-const PORT = 3000 || process.env.PORT;
+// const colors = require('colors');
+const connectDB = require('./config/db.js');
+require('dotenv').config();
+const mongoose = require('mongoose');
+const PORT = process.env.PORT || 3500;
 
-
+connectDB();
 
 const app = express();
 
-console.log(`Hello from inside server.js. STARTING MY SOLO PROJECT LFG!!!`);
+console.log(`Hello from inside server.js.`);
 
+// These two lines allow us to console log our post requests on the req.body object
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
+app.use('/', express.static(path.resolve(__dirname, '../dist')));
 
-/* Assuming we'll have multiple use paths: (not organized by priority yet)
-  - user info
-  - location info
-  - tasks
-  - employee info
-*/
 
 /*****DOUBLE CHECK PATHS HERE. MIGHT HAVE TO UPDATE ONCE USER IS LOGGED IN */
 // First is create users
-app.use('/api/users', require('./routes/userRoutes.js'));
+app.use('/users', require('./routes/userRoutes.js'));
 
-// Second User chooses location
-app.use('/api/users', require('./routes/locationRoutes.js'));
+// // Second User chooses location
+// app.use('/api/users', require('./routes/locationRoutes.js'));
 
-// Third, user gets tasks per location
-app.use('/app/users', require('./routes/taskRoutes.js'));
+// // Third, user gets tasks per location
+// app.use('/app/users', require('./routes/taskRoutes.js'));
 
-// Fourth, user gets employee information per location
-app.use('/api/employee', require('./routes/taskRoutes.js'));
+// // Fourth, user gets employee information per location
+// app.use('/api/employee', require('./routes/taskRoutes.js'));
 
 // global error handler: - Update this later:
 app.use((err, req, res, next) => {

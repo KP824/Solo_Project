@@ -6,14 +6,15 @@ module.exports = {
 
   entry: './src/index.js',
   output: {
+    publicPath: '/',
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
-    clean: true,
+    //clean: true,
   },
 
   plugins: [
     new HTMLWebpackPlugin({
-      template: './src/index.html'
+      template: '/index.html'
     })
   ],
 

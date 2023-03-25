@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { Login } from './Login.jsx';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>LFG PASTRY SOLO PROJECT!</h1>
+        <Login />
+       
       </div>
     )
   }
 };
+
 
 export default App;
