@@ -23,6 +23,7 @@ app.use('/', express.static(path.resolve(__dirname, '../dist')));
 // First is create users
 app.use('/users', require('./routes/userRoutes.js'));
 
+
 // // Second User chooses location
 // app.use('/api/users', require('./routes/locationRoutes.js'));
 

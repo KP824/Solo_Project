@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-
-export const Login = () => {
+export const Tasks = () => {
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = event => {
@@ -11,24 +10,21 @@ export const Login = () => {
     setTimeout(() => {
       setSubmitting(false);
     }, 2000)
-  };
-
+  }
   return (
     <div>
-      <h1>Please login below:</h1>
+      <h2>Hello, inside of Tasks Tab!</h2>
       {submitting && 
-        <div>Submitting form...</div>
+        <div>Adding task...</div>
       }
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label>
-            <p>Email:</p>
-            <input name="email" />
-            <p>Password:</p>
-            <input name="password" />
+            <p>New Task?:</p>
+            <input name="task" />
           </label>
         </fieldset>
-        <button type="submit">Login!</button>
+        <button type="submit">Add another task:</button>
       </form>
     </div>
   )

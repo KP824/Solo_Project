@@ -1,34 +1,32 @@
 import React, { useState } from 'react';
 
-
-export const Login = () => {
+export const Locations = () => {
   const [submitting, setSubmitting] = useState(false);
-
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
 
     setTimeout(() => {
       setSubmitting(false);
-    }, 2000)
-  };
+    }, 3000)
+  }
 
   return (
     <div>
-      <h1>Please login below:</h1>
-      {submitting && 
+      <h2>Inside Locations</h2>
+      {submitting &&
         <div>Submitting form...</div>
       }
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label>
-            <p>Email:</p>
-            <input name="email" />
-            <p>Password:</p>
-            <input name="password" />
+            <p>Shop Name</p>
+            <input name="shop-name" />
+            <p>Address</p>
+            <input name="address" />
           </label>
         </fieldset>
-        <button type="submit">Login!</button>
+        <button type="submit">Add New Location</button>
       </form>
     </div>
   )

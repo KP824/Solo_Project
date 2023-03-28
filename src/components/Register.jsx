@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
-
-export const Login = () => {
+export const Register = () => {
   const [submitting, setSubmitting] = useState(false);
-
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
@@ -15,20 +13,22 @@ export const Login = () => {
 
   return (
     <div>
-      <h1>Please login below:</h1>
-      {submitting && 
+      <h3>Inside of Register</h3>
+      {submitting &&
         <div>Submitting form...</div>
       }
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <label>
-            <p>Email:</p>
-            <input name="email" />
-            <p>Password:</p>
-            <input name="password" />
-          </label>
+        <label>
+          <p>Name:</p>
+          <input name="name" />
+          <p>Email:</p>
+          <input name="email" />
+          <p>Password:</p>
+          <input name="password" />
+        </label>
         </fieldset>
-        <button type="submit">Login!</button>
+        <button type="type">Register</button>
       </form>
     </div>
   )
