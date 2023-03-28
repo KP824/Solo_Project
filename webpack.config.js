@@ -4,24 +4,25 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
-  entry: './src/index.js',
+  entry: './frontend/src/index.js',
   output: {
     publicPath: '/',
-    path: path.join(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     //clean: true,
   },
-
   plugins: [
     new HTMLWebpackPlugin({
-      template: '/index.html'
+      template: path.join(__dirname,  './frontend/public/index.html')
     })
   ],
-
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.js?/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -30,14 +31,26 @@ module.exports = {
           }
         },
       },
+      {
+        test: /\.css$/, 
+        exclude: /node_modules/,
+        use: 'css-loader',
+      },
     ],
   },
 
   devServer: {
-    port: '3000',
+    host: 'localhost',
+    port: '8080',
     static: {
       publicPath: '/dist',
       directory: path.resolve(__dirname, 'dist')
+    },
+    proxy: { 
+      '/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
     },
     open: true,
     hot: true,
