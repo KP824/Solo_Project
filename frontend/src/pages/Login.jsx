@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
+import { FaSignInAlt } from 'react-icons/fa';
 
 
-export const Login = () => {
+function Login() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const { email, password } = formData;
+
+  const onChange = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.email]: event.target.value,
+    }))
+  }
+
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = event => {
@@ -10,29 +25,52 @@ export const Login = () => {
 
     setTimeout(() => {
       setSubmitting(false);
-    }, 2000)
+    }, 1000)
   };
 
   return (
     <div>
       <div className="login-container">
-        <h1>Please login below:</h1>
+        <h1>
+          <FaSignInAlt />
+          Please login below:
+        </h1>
         {submitting && 
           <div>Submitting form...</div>
         }
         <form onSubmit={handleSubmit}>
-          <fieldset>
-            <label>
-              <p>Email:</p>
-              <input name="email" />
-              <p>Password:</p>
-              <input name="password" />
-            </label>
-          </fieldset>
-          <button type="submit">Login!</button>
+          <div className='form-group'>
+            <p>Email:</p>
+            <input
+              type='text'
+              className='form-control'
+              id='email' 
+              name='email'
+              value={email}
+              placeholder='Enter your email peaz'
+              onChange={onChange} 
+            />
+          </div>
+          <div className='form-group'>
+            <p>Email:</p>
+            <input
+              type='text'
+              className='form-control'
+              id='password' 
+              name='password'
+              value={password}
+              placeholder='Enter your password peaz'
+              onChange={onChange} 
+            />
+          </div>
+          <div className='form-group'>
+            <button type="submit" className='btn btn-block'>~Login~</button>
+          </div>
         </form>
       </div>
       
     </div>
   )
 };
+
+export default Login;

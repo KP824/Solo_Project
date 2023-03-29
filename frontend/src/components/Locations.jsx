@@ -1,35 +1,68 @@
 import React, { useState } from 'react';
 
 export const Locations = () => {
+  const [formData, setFormData] = useState({
+    shopName: '',
+    address: '',
+  });
+
+  const { shopName, address } = formData;
+
+  const onChange = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }))
+  };
+
   const [submitting, setSubmitting] = useState(false);
+
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
 
     setTimeout(() => {
       setSubmitting(false);
-    }, 3000)
+    }, 1000)
   }
 
   return (
     <div>
       <h2 className="Location-header">Inside Locations</h2>
-      <p>lorem20lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 </p>
+      
       <div className="location-container">
         <div className="location-form">
         {submitting &&
         <div>Submitting form...</div>
         }
         <form onSubmit={handleSubmit}>
-          <fieldset>
-            <label>
-              <p>Shop Name</p>
-              <input name="shop-name" />
-              <p>Address</p>
-              <input name="address" />
-            </label>
-          </fieldset>
-          <button type="submit">Add New Location</button>
+          <div className='form-group'>
+            <p>Shop Name</p>
+            <input
+              type='text'
+              className='form-control'
+              id='name' 
+              name="shopName" 
+              value={shopName}
+              placeholder='Enter the name of your Business'
+              onChange={onChange}
+            />
+          </div>
+          <div className='form-group'>
+            <p>Address</p>
+            <input 
+              type='text'
+              className='form-control'
+              id='address' 
+              name="address" 
+              value={address}
+              placeholder='Enter the address of your Business'
+              onChange={onChange}
+            />
+          </div>
+          <div className='form-group'>
+            <button type="submit">Add New Location</button>
+          </div>
         </form>
         </div>
 

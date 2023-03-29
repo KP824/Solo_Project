@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
 
 export const Employees = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    startDate: '',
+    foodHandlerId: '',
+    issueDate: '',
+    expirationDate: '',
+  });
+
+  const { name, startDate, foodHandlerId, issueDate, expirationDate } = formData;
+
+  const onChange = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }))
+  };
+
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = event => {
@@ -9,34 +26,82 @@ export const Employees = () => {
 
     setTimeout(() => {
       setSubmitting(false);
-    }, 2000)
+    }, 1000)
   };
 
   return (
     <div>
       <h2>Inside of Employees Tab</h2>
-      <p>lorem20lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 </p>
+      
       <div className="employee-container">
         <div className="employee-form">
         {submitting &&
         <div>Adding Employee info...</div>
         }
           <form onSubmit={handleSubmit}>
-            <fieldset>
-              <label>
-                <p>Employee Full Name:</p>
-                <input name="employee-name" />
-                <p>Start Date:</p>
-                <input name="start-date" />
-                <p>Food Handler ID#:</p>
-                <input name="foodhandler-id" />
-                <p>Issue Date:</p>
-                <input name="issue-date" />
-                <p>Expiration Date:</p>
-                <input name="expiration-date" />
-              </label>
-            </fieldset>
-            <button type="submit">Add Employee Info!</button>
+            <div className='form-group'>
+              <p>Employee Full Name:</p>
+              <input 
+                type='text'
+                className='form-control'
+                id='name'
+                name="employee-name"
+                value={name}
+                placeholder='Enter employee name'
+                onChange={onChange} 
+              />
+            </div>
+            <div className='form-group'>
+              <p>Employee's start date</p>
+              <input 
+                type='text'
+                className='form-control'
+                id='startDate'
+                name="start-date"
+                value={startDate}
+                placeholder='Enter date'
+                onChange={onChange} 
+              />
+            </div>
+            <div className='form-group'>
+              <p>Food Handler ID #:</p>
+              <input 
+                type='text'
+                className='form-control'
+                id='food-handler-id'
+                name="food-handler-id"
+                value={foodHandlerId}
+                placeholder='Enter ID number'
+                onChange={onChange} 
+              />
+            </div>
+            <div className='form-group'>
+              <p>ID issue date</p>
+              <input 
+                type='text'
+                className='form-control'
+                id='id-issue-date'
+                name="id-issue-date"
+                value={issueDate}
+                placeholder='Enter issue date'
+                onChange={onChange} 
+              />
+            </div>
+            <div className='form-group'>
+              <p>ID expiration date</p>
+              <input 
+                type='text'
+                className='form-control'
+                id='id-exp-date'
+                name="id-exp-date"
+                value={expirationDate}
+                placeholder='Enter expiration date'
+                onChange={onChange} 
+              />
+            </div>
+            <div className='form-group'>
+              <button type="submit">Add Employee Info!</button>
+            </div>  
           </form>
         </div>
 

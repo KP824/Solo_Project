@@ -6,14 +6,14 @@ module.exports = {
 
   entry: './frontend/src/index.js',
   output: {
-    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
     //clean: true,
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.join(__dirname,  './frontend/public/index.html')
+      template: path.join(__dirname, './frontend/public/index.html')
     })
   ],
   resolve: {
@@ -40,6 +40,7 @@ module.exports = {
   },
 
   devServer: {
+    historyApiFallback: true,
     host: 'localhost',
     port: '8080',
     static: {
@@ -48,7 +49,7 @@ module.exports = {
     },
     proxy: { 
       '/**': {
-        target: 'http://localhost:3000/',
+        target: 'http://localhost:5000',
         secure: false,
       },
     },
