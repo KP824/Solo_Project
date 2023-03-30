@@ -11,7 +11,7 @@ const userController = require('../controllers/userController.js');
 // });
 
 router.post('/register', userController.registerUser, (req, res) => {
-  res.status(200).json({ message: `Creating User: ${res.locals.user}` });
+  res.status(200).json(res.locals.user);
 });
 
 router.post('/login', userController.loginUser, (req, res) => {

@@ -26,16 +26,12 @@ app.get('/*', (req, res) => {
 })
 
 
-/*****DOUBLE CHECK PATHS HERE. MIGHT HAVE TO UPDATE ONCE USER IS LOGGED IN */
+/*****DOUBLE CHECK PATHS HERE*/
 // First is create users
 app.use('/api/users', require('./routes/userRoutes.js'));
 
-
-// // Second User chooses location
-// app.use('/api/users', require('./routes/locationRoutes.js'));
-
-// // Third, user gets tasks per location
-// app.use('/api/users', require('./routes/taskRoutes.js'));
+//  user gets tasks per user
+app.use('/api/users', require('./routes/taskRoutes.js'));
 
 // // Fourth, user gets employee information per location
 // app.use('/api/employee', require('./routes/taskRoutes.js'));

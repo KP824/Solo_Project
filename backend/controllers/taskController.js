@@ -1,30 +1,37 @@
-const asyncHandler = require('express-async-handler');
-const Task = require('../models/taskModel.js');
+//const asyncHandler = require('express-async-handler');
+const User = require('../models/userModel');
+
+const taskController = {};
 
 
-// const getTasks = asyncHandler(async(req, res) => {
+taskController.getTasks = async (req, res, next) => {
+  console.log(`inside taskController.getTasks`);
+  //const currentUser = await models.User.findOne({_id: _id});
 
-// });
+  try {
+    const task = await models.User.find({_id: _id});
 
-
-// const createTask = asyncHandler(async(req, res) => {
-
-// });
-
-
-// const updateTask = asyncHandler(async(req, res) => {
-
-// });
-
-
-// const deleteTask = asyncHandler(async(req, res) => {
-
-// });
+    res.locals.task = task;
+    return next();
+  } catch(err) {
+    return next(err);
+  }
+};
 
 
-// module.exports = {
-//   getTasks,
-//   createTask,
-//   updateTask,
-//   deleteTask,
+// taskController.createTask = async (req, res, next) => {
+
 // };
+
+
+// taskController.updateTask = async (req, res, next) => {
+
+// };
+
+
+// taskController.deleteTask = async (req, res) => {
+
+// };
+
+
+module.exports = taskController;

@@ -18,6 +18,44 @@ const userSchema = mongoose.Schema({
     type: String,
     default: 'Manager'
   },
+  tasks: [
+    {
+      task: {
+        type: String,
+        required: [true, 'Please add a task.']
+      }
+    },
+  ],
+  employees: [
+    {
+      employeeName: {
+        type: String,
+        required: [true, 'Please add employee name.']
+      },
+      startDate: {
+        type: String,
+        required: [true, 'Please add start date.']
+      },
+      foodHandler_id: {
+        number: {
+          type: String,
+          required: [true, 'Please add id number.']
+        },
+        issued_on: {
+          type: String,
+          required: [true, 'Please add id number.']
+        },
+        expires_on: {
+          type: String,
+          required: [true, 'Please add expiration date.']
+        } 
+      },
+      isActive: {
+        type: Boolean,
+        default: true,
+      },
+    }
+  ],
   locations: [
     {
       shopName: {
@@ -28,44 +66,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add an address.'],
       },
-      tasks: [
-        {
-          taskName: {
-            type: String,
-            required: [true, 'Please add a task.']
-          }
-        },
-      ],
-      employees: [
-        {
-          employeeName: {
-            type: String,
-            required: [true, 'Please add employee name.']
-          },
-          startDate: {
-            type: String,
-            required: [true, 'Please add start date.']
-          },
-          foodHandler_id: {
-            number: {
-              type: String,
-              required: [true, 'Please add id number.']
-            },
-            issued_on: {
-              type: String,
-              required: [true, 'Please add id number.']
-            },
-            expires_on: {
-              type: String,
-              required: [true, 'Please add expiration date.']
-            } 
-          },
-          isActive: {
-            type: Boolean,
-            default: true,
-          },
-        }
-      ],
+      
     },
   ],
 },

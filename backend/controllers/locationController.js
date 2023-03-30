@@ -1,5 +1,5 @@
-const asyncHandler = require('express-async-handler');
-const Location = require('../models/locationModel.js');
+// const asyncHandler = require('express-async-handler');
+// const Location = require('../models/locationModel.js');
 
 // create CRUD requests
 

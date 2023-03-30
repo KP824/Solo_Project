@@ -9,19 +9,21 @@ import { Navbar } from './components/Navbar.jsx';
 
 const App = () => {
   return (
-    <Router>
-      <div className="container">
-        <h1>Hello from inside App</h1>
-        <Header />
-       
-        <Routes>
-          <Route exact path='/' element={<Dashboard />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element ={<Register />} />
-          <Route exact path="*" component={() => <Redirect to={"/"} />} />
-        </Routes>
-      </div>
-    </Router>
+    <>
+      <Router>
+        <div className="container">
+          <h1>Hello from inside App</h1>
+          <Header />
+        
+          <Routes>
+            <Route exact path='/' element={<Dashboard />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element ={<Register />} />
+            <Route exact path="*" component={() => <Redirect to={"/"} />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
   )
 };
 

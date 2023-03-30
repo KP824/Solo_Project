@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const Employees = () => {
+function Employees() {
   const [formData, setFormData] = useState({
     name: '',
     startDate: '',
@@ -18,15 +18,11 @@ export const Employees = () => {
     }))
   };
 
-  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSubmitting(true);
+    
 
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1000)
   };
 
   return (
@@ -35,9 +31,6 @@ export const Employees = () => {
       
       <div className="employee-container">
         <div className="employee-form">
-        {submitting &&
-        <div>Adding Employee info...</div>
-        }
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <p>Employee Full Name:</p>
@@ -114,3 +107,5 @@ export const Employees = () => {
     </div>
   )
 };
+
+export default Employees
