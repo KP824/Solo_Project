@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import Header from './components/Header';
 import StartPage from './pages/StartPage';
 import './index.css';
-import { Navbar } from './components/Navbar.jsx';
+//import { Navbar } from './components/Navbar.jsx';
 
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
     <>
       <Router>
         <div className="main-container">
-          <h1>Hello from inside App</h1>
+          
           <Header />
         
           <Routes>
@@ -22,7 +22,6 @@ const App = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element ={<Register />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route exact path="*" component={() => <Redirect to={"/"} />} />
           </Routes>
         </div>
       </Router>
@@ -31,8 +30,3 @@ const App = () => {
 };
 
 export default App;
-
- {/* <Router>
-        <Navbar />
-      
-      </Router> */}

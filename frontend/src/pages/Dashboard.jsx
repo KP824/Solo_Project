@@ -2,17 +2,20 @@
 import React from 'react';
 import Employees from '../components/Employees';
 import Tasks from '../components/Tasks';
+import Navbar from '../components/Navbar';
 
 function Dashboard() {
   return (
     <>
-      <h3>Inside of dashboard</h3>
-      
-      <div className="dashboard-cont">
-        <div className="tasks-cont">
+     
+      <div className="dashboard-container">
+        <div className="nav-bar-container">
+          <Navbar />
+        </div>
+        <div className="tasks-container">
           <Tasks />
         </div>
-        <div className="employee-list">
+        <div className="employees-container">
           <Employees />
         </div>
 

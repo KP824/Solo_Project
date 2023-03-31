@@ -1,44 +1,26 @@
 import React from 'react';
-import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'; // react icons from font awesome
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout, reset } from '../features/authService';
+
+import ImageComponent from './ImageComponent';
+
+import img from "../../../dist/images/mflowlogo.jpg"
+
+
 
 function Header() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  
 
   return (
-    <header className='header'>
+    <header className='header-container'>
       <div className='logo'>
-        <Link to='/'>NAME OF YOUR APP HERE</Link>
+      <h1>Main Logo Here</h1>
+        <Link to='/'>
+          <img src={img} />
+          {/* <ImageComponent url={logo} /> */}
+          
+        </Link>
       </div>
-      <ul>
-        {user ? (
-          <li>
-            <Link to='/login'>
-              <FaSignInAlt /> Login
-            </Link>
-          </li>
-        ) : (
-          <>
-            <li>
-            <Link to='/login'>
-              <FaSignInAlt /> Login
-            </Link>
-          </li>
-
-        <li>
-          <Link to='/register'>
-            <FaUser /> Register
-          </Link>
-        </li>
-
-        </>) }
-        
-
-      </ul>
+      
     </header>
   )
 }

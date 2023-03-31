@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 
 function Login() {
@@ -10,6 +11,7 @@ function Login() {
   });
 
   const { email, password } = formData;
+  const [redirect, setRedirect] = useState(false);
 
   const onChange = (event) => {
     setFormData((prevState) => ({
@@ -17,8 +19,6 @@ function Login() {
       [event.target.name]: event.target.value,
     }))
   }
-
-  const [redirect, setRedirect] = useState(null);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -29,14 +29,11 @@ function Login() {
     }
     // create post request to server
     axios.post('/api/users/login', userLogin).then((response) => {
-      console.log(`Inside userLogin post request: ${response.data}`);
-
-      useEffect(() => {
-        const newRedirect = '/dashboard';
-      }, [redirect]);
-
+      setRedirect(true)
+      console.log(`Inside userLogin post request: ${JSON.stringify(response.data)}`)
+      
     })
-    // 3.30.23 Post request is 404 error
+
   };
 
   return (
@@ -46,7 +43,7 @@ function Login() {
           <FaSignInAlt />
           Please login below:
         </h1>
-        
+        {redirect && <Navigate to="/dashboard" replace={true} />}
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
             <p>Email:</p>

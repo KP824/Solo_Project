@@ -1,30 +1,14 @@
 import React, { useState } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 
 function Tasks() {
   const [taskForm, setTaskForm] = useState({
     task: '',
   });
+  // const [listTasks, setListTasks] = 
 
   const { task } = taskForm; 
 
-  // const [submitting, setSubmitting] = useState(false);
-
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   setSubmitting(true);
-
-  //   // check if input is valid for task
-  //   if (!task) {
-  //     alert(`Please add a task.`)
-  //   } else {
-  //     axios.post()
-  //   }
-
-  //   setTimeout(() => {
-  //     setSubmitting(false);
-  //   }, 1000)
-  // }
 
   const onChange = (event) => {
     setTaskForm((prevState) => ({
@@ -36,15 +20,8 @@ function Tasks() {
   // using an onClick approach
   function handleClick() {
     // send data to the backend via POST
-    fetch('http://localhost:8080/', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "task": task
-      })
+    axios.post('/api/users/tasks', task).then((response) => {
+      console.log(`post request response: ${JSON.stringify(response.data)}`)
     })
   }
 
@@ -75,8 +52,10 @@ function Tasks() {
         </div>
 
         <div className="task-display">
-          <h3>Add tasks list here: Flex column?</h3>
-          <p>lorem20lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 lorem20 </p>
+          <h3>Add tasks list here: Flex or grid?</h3>
+          <div className="task-list-item">
+            <h5>need tasks here</h5>
+          </div>
         </div>
       </div>
       

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
-// app.use('/', express.static(path.resolve(__dirname, '../dist')));
+app.use('/', express.static(path.resolve(__dirname, '../dist')));
 
 app.get('/', (req, res) => {
   console.log('servehomedist')
@@ -35,8 +35,8 @@ app.get('/api/users/login', (req, res) => {
 app.use('/api/users', require('./routes/userRoutes.js'));
 
 
-//  user gets tasks per user
-app.use('/api/users/dashboard', require('./routes/taskRoutes.js'));
+//  user tasks path per user
+app.use('/api/users/tasks', require('./routes/taskRoutes.js'));
 
 // // Fourth, user gets employee information per location
 // app.use('/api/employee', require('./routes/taskRoutes.js'));
