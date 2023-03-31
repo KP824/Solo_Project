@@ -19,19 +19,24 @@ app.use(cors());
 
 // app.use('/', express.static(path.resolve(__dirname, '../dist')));
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   console.log('servehomedist')
   // express.static(path.resolve(__dirname, '../dist'))
   res.sendFile(path.join(__dirname, '../frontend/public/index.html'))
 })
 
+app.get('/api/users/login', (req, res) => {
+  console.log(`inside api/users/login get request`)
+  res.status(200).redirect('/dashboard');
+})
 
 /*****DOUBLE CHECK PATHS HERE*/
 // First is create users
 app.use('/api/users', require('./routes/userRoutes.js'));
 
+
 //  user gets tasks per user
-app.use('/api/users', require('./routes/taskRoutes.js'));
+app.use('/api/users/dashboard', require('./routes/taskRoutes.js'));
 
 // // Fourth, user gets employee information per location
 // app.use('/api/employee', require('./routes/taskRoutes.js'));

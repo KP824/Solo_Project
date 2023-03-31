@@ -19,7 +19,7 @@ userController.getAllUsers = (req, res, next) => {
 // @route POST /user/register
 // @access Private
 userController.registerUser = async (req, res, next) => {
-  console.log(`Hello, inside of userController.registerUser`)
+  //console.log(`Hello, inside of userController.registerUser`)
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -50,7 +50,7 @@ userController.registerUser = async (req, res, next) => {
   try {
     const user = await User.create(newUser);
     res.locals.user = user;
-    console.log(`saves user to res.locals.user`);
+    //console.log(`saves user to res.locals.user`);
     return next();
   }
   catch(err) {

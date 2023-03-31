@@ -14,14 +14,32 @@ taskController.getTasks = async (req, res, next) => {
     res.locals.task = task;
     return next();
   } catch(err) {
-    return next(err);
+    return next({
+      log: 'error inside of taskController.getTasks',
+      message: { err: 'failed to get tasks inside of taskController.getTasks'}
+    });
   }
 };
 
+// START HERE!!!!!!!!!!!!!!!!
+taskController.createTask = async (req, res, next) => {
+  console.log(`inside of taskController.createTask`)
+  const { task } = req.body;
 
-// taskController.createTask = async (req, res, next) => {
-
-// };
+  try {
+    const createTask = await User.tasks.insertOne({
+      task: task
+    });
+    res.locals.createTask = createTask;
+    return next();
+  } 
+  catch (err) {
+    return next({
+      log: 'error inside of taskController.createTask',
+      message: { err: 'failed to create task inside of taskController.createTask' }
+    })
+  }
+};
 
 
 // taskController.updateTask = async (req, res, next) => {

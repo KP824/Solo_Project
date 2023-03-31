@@ -32,9 +32,9 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/, 
+        test: /\.css?/, 
         exclude: /node_modules/,
-        use: 'css-loader',
+        use: ['style-loader', 'css-loader']
       },
     ],
   },

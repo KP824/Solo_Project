@@ -8,8 +8,8 @@ router.get('/', taskController.getTasks, (req, res) => {
   res.status(200).json(res.locals.task);
 });
 
-router.post('/', (req, res) => {
-  res.status(200).json({ message: 'Create Task' });
+router.post('/', taskController.createTask, (req, res) => {
+  res.status(200).json(res.locals.createTask);
 });
 
 // router.put('/:id', (req, res) => {

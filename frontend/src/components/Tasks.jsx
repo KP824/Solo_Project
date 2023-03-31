@@ -43,7 +43,7 @@ function Tasks() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        task: task
+        "task": task
       })
     })
   }

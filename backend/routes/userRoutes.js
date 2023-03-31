@@ -11,12 +11,15 @@ const userController = require('../controllers/userController.js');
 // });
 
 router.post('/register', userController.registerUser, (req, res) => {
+  console.log(`end of Post request: ${res.locals.user}`);
+  // If register is successful, we want to redirect to '/dashboard'
   res.status(200).json(res.locals.user);
 });
 
 router.post('/login', userController.loginUser, (req, res) => {
-  console.log(`inside user/login route`);
-  res.status(200).json({ message: `Login User info ${res.locals.user}` });
+  //console.log(`end of verify/login route. Want to redirect to dashboard. Logging in with this user: ${res.locals.user}`);
+  //if successful, res.redirect('/dashboard');
+  res.status(200).json(res.locals.user);
 });
 
 

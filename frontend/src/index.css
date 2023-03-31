@@ -5,6 +5,18 @@
   box-sizing: border-box;
 }
 
+.startpage-cont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: seagreen;
+}
+
+.main-container {
+  background-color: red;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;

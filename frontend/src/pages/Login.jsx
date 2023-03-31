@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
+import axios from 'axios';
 
 
 function Login() {
@@ -13,21 +14,29 @@ function Login() {
   const onChange = (event) => {
     setFormData((prevState) => ({
       ...prevState,
-      [event.target.email]: event.target.value,
+      [event.target.name]: event.target.value,
     }))
   }
 
-  const [submitting, setSubmitting] = useState(false);
+  const [redirect, setRedirect] = useState(null);
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSubmitting(true);
-
     
+    const userLogin = {
+      email,
+      password,
+    }
+    // create post request to server
+    axios.post('/api/users/login', userLogin).then((response) => {
+      console.log(`Inside userLogin post request: ${response.data}`);
 
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1000)
+      useEffect(() => {
+        const newRedirect = '/dashboard';
+      }, [redirect]);
+
+    })
+    // 3.30.23 Post request is 404 error
   };
 
   return (
@@ -37,9 +46,7 @@ function Login() {
           <FaSignInAlt />
           Please login below:
         </h1>
-        {submitting && 
-          <div>Submitting form...</div>
-        }
+        
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
             <p>Email:</p>
